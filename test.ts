@@ -1,41 +1,39 @@
-import groupMethod 	from "./src/modules/group.ts";
-import runMethod 	from "./src/modules/run.ts";
-import testMethod 	from "./src/modules/test.ts";
+import test from "./mod.ts";
 
-testMethod("1", (expect) => {
+test("1", (expect) => {
 	expect(2).toTypeOf("number");
 });
 
-testMethod("2", (expect) => {
-	expect("2").toTypeOf("number");
+test("2", (expect) => {
+	expect("2").toTypeOf("number").toBe("2");
 });
 
-groupMethod("Sum tests", () => {
-	testMethod("3", (expect) => {
-		expect(2 + 2).toEqual(4);
+test.group("Sum tests", () => {
+	test("3", (expect) => {
+		expect(2 + 2).toBe(4);
 	});
 
-	testMethod("4", (expect) => {
-		expect(2 + 2).toEqual(5);
+	test("4", (expect) => {
+		expect(2 + 2).toBe(5);
 	});
 	
-	groupMethod("Positive sum tests", () => {
-		testMethod("5", (expect) => {
-			expect(2 + 2).toEqual(5);
+	test.group("Positive sum tests", () => {
+		test("5", (expect) => {
+			expect(2 + 2).toBe(5);
 		});
 
-		testMethod("6", (expect) => {
-			expect(2 + 2).toEqual(4);
+		test("6", (expect) => {
+			expect(2 + 2).toBe(4);
 		});
 	});
 });
 	
-testMethod("7", (expect) => {
+test("7", (expect) => {
 	expect(2).toTypeOf("number");
 });
 
-testMethod("8", (expect) => {
+test("8", (expect) => {
 	expect("2").toTypeOf("number");
 });
 
-runMethod();
+test.run();

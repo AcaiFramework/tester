@@ -40,7 +40,6 @@ const runMethod = async () => {
 	// Run tests
 	// -------------------------------------------------
 
-	console.clear();
 	console.log("\n\nRunning tests");
 	console.log(repeat("=", 20));
 	console.log("");
@@ -83,7 +82,10 @@ const runMethod = async () => {
 			console.log(`\x1b[31m${fails[i].message}\x1b[37m`);
 			console.log(`\x1b[31m${fails[i].stack}\x1b[37m\n`);
 		}
+
+		Deno.exit(1);
 	}
+	Deno.exit(0);
 }
 
 export default runMethod;

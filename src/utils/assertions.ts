@@ -13,7 +13,7 @@ const assertions = (valueToAssert: unknown) => {
 		// toEqual
 		// -------------------------------------------------
 
-		this.toEqual = (valueToTest) => {
+		this.toBe = (valueToTest) => {
 			const context 	= getContext();
 			const passes 	= valueToAssert === valueToTest;
 
@@ -33,7 +33,7 @@ const assertions = (valueToAssert: unknown) => {
 		// toNotEqual
 		// -------------------------------------------------
 
-		this.toNotEqual = (valueToTest) => {
+		this.toNotBe = (valueToTest) => {
 			const context 	= getContext();
 			const passes 	= valueToAssert !== valueToTest;
 
@@ -60,6 +60,86 @@ const assertions = (valueToAssert: unknown) => {
 
 			// add to count
 			if (!passes) addFail(`${valueToAssert} is not of the type ${valueToTest}`);
+
+			// feedback log
+			if (passes)
+				success(context.testMessage as string);
+			else
+				fail(context.testMessage as string);
+
+			return this;
+		}
+
+		// -------------------------------------------------
+		// toDefined
+		// -------------------------------------------------
+
+		this.toDefined = () => {
+			const passes 	= valueToAssert !== undefined;
+			const context 	= getContext();
+
+			// add to count
+			if (!passes) addFail(`${valueToAssert} is not defined`);
+
+			// feedback log
+			if (passes)
+				success(context.testMessage as string);
+			else
+				fail(context.testMessage as string);
+
+			return this;
+		}
+
+		// -------------------------------------------------
+		// toUndefined
+		// -------------------------------------------------
+
+		this.toUndefined = () => {
+			const passes 	= valueToAssert === undefined;
+			const context 	= getContext();
+
+			// add to count
+			if (!passes) addFail(`${valueToAssert} is defined`);
+
+			// feedback log
+			if (passes)
+				success(context.testMessage as string);
+			else
+				fail(context.testMessage as string);
+
+			return this;
+		}
+
+		// -------------------------------------------------
+		// toNull
+		// -------------------------------------------------
+
+		this.toNull = () => {
+			const passes 	= valueToAssert === null;
+			const context 	= getContext();
+
+			// add to count
+			if (!passes) addFail(`${valueToAssert} is not null`);
+
+			// feedback log
+			if (passes)
+				success(context.testMessage as string);
+			else
+				fail(context.testMessage as string);
+
+			return this;
+		}
+
+		// -------------------------------------------------
+		// toNotNull
+		// -------------------------------------------------
+
+		this.toNotNull = () => {
+			const passes 	= valueToAssert !== null;
+			const context 	= getContext();
+
+			// add to count
+			if (!passes) addFail(`${valueToAssert} is null`);
 
 			// feedback log
 			if (passes)
