@@ -1,0 +1,30 @@
+// interfaces
+import ContextInterface from "../interfaces/context.ts";
+
+// -------------------------------------------------
+// Properties
+// -------------------------------------------------
+
+let context: ContextInterface = {
+	depth : -1,
+	order : 0,
+};
+
+// -------------------------------------------------
+// Methods
+// -------------------------------------------------
+
+export const getContext = () => context;
+
+export const setValue = (key: keyof typeof context, value: unknown, addOrder = true) => {
+	context = {...context, [key]:value, order: context.order + (addOrder ? 1:0)};
+}
+
+export const setContext = (value: ContextInterface) => {
+	context = value;
+}
+
+export const addDepth = (quantity = 1) => {
+	const depth = context.depth + quantity;
+	context = {...context, depth, order: context.order + 1};
+}
