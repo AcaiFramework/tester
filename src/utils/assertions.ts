@@ -22,9 +22,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(context.testMessage as string);
+				success(`${context.testMessage} (toBe)`);
 			else
-				fail(context.testMessage as string);
+				fail(`${context.testMessage} (toBe)`);
 
 			return this;
 		}
@@ -42,9 +42,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(context.testMessage as string);
+				success(`${context.testMessage} (toNotBe)`);
 			else
-				fail(context.testMessage as string);
+				fail(`${context.testMessage} (toNotBe)`);
 
 			return this;
 		}
@@ -63,9 +63,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(context.testMessage as string);
+				success(`${context.testMessage} (toTypeOf)`);
 			else
-				fail(context.testMessage as string);
+				fail(`${context.testMessage} (toTypeOf)`);
 
 			return this;
 		}
@@ -83,9 +83,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(context.testMessage as string);
+				success(`${context.testMessage} (toDefined)`);
 			else
-				fail(context.testMessage as string);
+				fail(`${context.testMessage} (toDefined)`);
 
 			return this;
 		}
@@ -103,9 +103,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(context.testMessage as string);
+				success(`${context.testMessage} (toUndefined)`);
 			else
-				fail(context.testMessage as string);
+				fail(`${context.testMessage} (toUndefined)`);
 
 			return this;
 		}
@@ -123,9 +123,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(context.testMessage as string);
+				success(`${context.testMessage} (toNull)`);
 			else
-				fail(context.testMessage as string);
+				fail(`${context.testMessage} (toNull)`);
 
 			return this;
 		}
@@ -143,9 +143,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(context.testMessage as string);
+				success(`${context.testMessage} (toNotNull)`);
 			else
-				fail(context.testMessage as string);
+				fail(`${context.testMessage} (toNotNull)`);
 
 			return this;
 		}

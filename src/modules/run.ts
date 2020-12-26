@@ -10,7 +10,8 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	// -------------------------------------------------
 	// Cache groups
 	// -------------------------------------------------
-	let cbs = getGroups();
+	let cbs 		= getGroups();
+	const ranTests 	= [];
 
 	while (cbs.length > 0) {
 		resetGroups();
@@ -87,7 +88,7 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	// Error log
 	// -------------------------------------------------
 
-	if (fails.length >= 0) {
+	if (fails.length > 0) {
 		console.log("Error log");
 		console.log(repeat("=", 20));
 
