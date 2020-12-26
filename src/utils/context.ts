@@ -11,6 +11,7 @@ const except: string[] = [];
 let context: ContextInterface = {
 	depth 	: -1,
 	order 	: 0,
+	tag		: [],
 };
 
 // -------------------------------------------------

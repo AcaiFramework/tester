@@ -24,3 +24,7 @@ export const addTest = (test: () => void) => {
 	const context = getContext();
 	tests.push({context, cb: test});
 }
+
+export const addTag = (tags: string[]) => {
+	tests[tests.length - 1];
+}

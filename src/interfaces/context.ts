@@ -3,4 +3,5 @@ export default interface ContextInterface {
 	order			: number;
 	groupMessage?	: string;
 	testMessage?	: string;
+	tag				: string[];
 }

@@ -12,5 +12,6 @@ export default interface TestModuleInterface {
 	only: (description: string, callback: (expect: ExpectAssertionInterface) => void) => void;
 	except: (description: string, callback: (expect: ExpectAssertionInterface) => void) => void;
 	
+	find: (reg: RegExp) => void;
 	run: (tags?: string[], all?: boolean) => void;
 }
