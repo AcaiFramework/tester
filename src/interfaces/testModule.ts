@@ -8,6 +8,9 @@ export default interface TestModuleInterface {
 	(description: string, callback: (expect: ExpectAssertionInterface) => void): void;
 
 	group: (description: string, callback: () => void) => void;
+
+	only: (description: string, callback: (expect: ExpectAssertionInterface) => void) => void;
+	except: (description: string, callback: (expect: ExpectAssertionInterface) => void) => void;
 	
-	run: () => void;
+	run: (tags?: string[], all?: boolean) => void;
 }

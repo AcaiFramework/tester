@@ -1,12 +1,12 @@
-// Modules
-import { getContext, setContext } from "../utils/context.ts";
-import { getTests } from "../utils/testQueue.ts";
-import { getGroups, resetGroups } from "../utils/groupQueue.ts";
-import { getStackTrace, log } from "../utils/logging.ts";
-import { getFail } from "../utils/failCount.ts";
-import { repeat } from "../utils/string.ts";
+// Utils
+import { getContext, getExcept, getOnly, setContext } 	from "../utils/context.ts";
+import { getTests } 				from "../utils/testQueue.ts";
+import { getGroups, resetGroups } 	from "../utils/groupQueue.ts";
+import { log } 						from "../utils/logging.ts";
+import { getFail } 					from "../utils/failCount.ts";
+import { repeat } 					from "../utils/string.ts";
 
-const runMethod = async () => {
+const runMethod = async (tags: string[] = [], runAll = false) => {
 	// -------------------------------------------------
 	// Cache groups
 	// -------------------------------------------------
@@ -44,10 +44,24 @@ const runMethod = async () => {
 	console.log(repeat("=", 20));
 	console.log("");
 
-	// run all groups
+	// get info
+	const only 		= getOnly();
+	const except 	= getExcept();
+
+	// run all tests
 	for (let i = 0; i < tests.length; i += 1) {
 		setContext(tests[i].context);
 		const context = getContext();
+
+		// skip test if it was not added to only
+		if (!runAll && only.length > 0 && !only.find(i => i === `${context.groupMessage}${context.testMessage}`)) {
+			continue;
+		}
+
+		// skip test if it was added to except
+		if (!runAll && except.length > 0 && except.find(i => i === `${context.groupMessage}${context.testMessage}`)) {
+			continue;
+		}
 
 		if (currMessage !== context.groupMessage && context.groupMessage) {
 			log(context.groupMessage, true);
