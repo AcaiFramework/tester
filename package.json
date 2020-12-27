@@ -1,0 +1,12 @@
+{
+  "name": "@acai/testing",
+  "version": "1.0.0",
+  "description": "A complete solution with toolkit for your test suite",
+  "repository": "https://github.com/AcaiFramework/tester.git",
+  "author": "Rafael <rafael.chaves98@hotmail.com>",
+  "license": "BSD-3-Clause",
+  "private": false,
+  "scripts": {
+	  "test": "deno run -A --unstable index.ts"
+  }
+}
