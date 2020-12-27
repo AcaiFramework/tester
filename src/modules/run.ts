@@ -72,6 +72,11 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 			continue;
 		}
 
+		// skip test if not added to tags list
+		if (tags.length > 0 && !tags.find(i => context.tag.find(x => x === i))) {
+			continue;
+		}
+
 		if (currMessage !== context.groupMessage && context.groupMessage) {
 			log(context.groupMessage, true);
 			currMessage = context.groupMessage;

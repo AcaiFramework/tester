@@ -12,6 +12,12 @@ const groupMethod = (description: string, callback: (expect: ExpectAssertionInte
 		setValue("groupMessage", description);
 		await callback(expect);
 	});
+
+	return {
+		tag: (tags: string | string[]) => {
+			
+		}
+	}
 }
 
 export default groupMethod;
