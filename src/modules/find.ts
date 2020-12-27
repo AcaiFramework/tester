@@ -7,7 +7,7 @@ const findMethod = async (regex: RegExp) => {
 		includeFiles: true,
 		match		: [regex],
 	})) {
-		await import (entry.path.replace(/^.+?(\\|\/)/, "/"));
+		await import ("file:" + entry.path);
 	}
 }
 
