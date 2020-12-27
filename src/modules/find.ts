@@ -1,15 +1,13 @@
 // Packages
 import { walkSync } from "https://deno.land/std@0.82.0/fs/mod.ts";
 
-const findMethod = (regex: RegExp) => {
-	const root = Deno.cwd();
-	
-	for (const entry of walkSync(root, {
+const findMethod = async (regex: RegExp) => {	
+	for await (const entry of walkSync(Deno.cwd(), {
 		includeDirs	: false,
 		includeFiles: true,
 		match		: [regex],
 	})) {
-		console.log(entry.path);
+		await import (entry.path.replace(/^.+?(\\|\/)/, "/"));
 	}
 }
 

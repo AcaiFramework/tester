@@ -1,4 +1,4 @@
 import test from "./mod.ts";
 
-test.find(/\S\.(test|tests)\.(js|ts)$/);
-test.run();
+await test.find(/\S\.(test|tests)\.(js|ts)$/);
+await test.run();

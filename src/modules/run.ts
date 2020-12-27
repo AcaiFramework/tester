@@ -1,17 +1,16 @@
 // Utils
 import { getContext, getExcept, getOnly, setContext } 	from "../utils/context.ts";
-import { getTests } 				from "../utils/testQueue.ts";
-import { getGroups, resetGroups } 	from "../utils/groupQueue.ts";
-import { log } 						from "../utils/logging.ts";
-import { getFail } 					from "../utils/failCount.ts";
-import { repeat } 					from "../utils/string.ts";
+import { getTests } 									from "../utils/testQueue.ts";
+import { getGroups, resetGroups } 						from "../utils/groupQueue.ts";
+import { log } 											from "../utils/logging.ts";
+import { getFail } 										from "../utils/failCount.ts";
+import { repeat } 										from "../utils/string.ts";
 
 const runMethod = async (tags: string[] = [], runAll = false) => {
 	// -------------------------------------------------
 	// Cache groups
 	// -------------------------------------------------
 	let cbs 		= getGroups();
-	const ranTests 	= [];
 
 	while (cbs.length > 0) {
 		resetGroups();
