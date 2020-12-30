@@ -24,6 +24,10 @@ export const setValue = (key: keyof typeof context, value: unknown, addOrder = t
 	context = {...context, [key]:value, order: context.order + (addOrder ? 1:0)};
 }
 
+export const addTag = (tags: string[]) => {
+	context = {...context, tag:[...context.tag,...tags]};
+}
+
 export const setContext = (value: ContextInterface) => {
 	context = value;
 }

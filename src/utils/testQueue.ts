@@ -22,7 +22,7 @@ export const resetTests = () => {
 
 export const addTest = (test: () => void, tag: string[] = []) => {
 	const context = getContext();
-	tests.push({context: {...context, tag}, cb: test});
+	tests.push({context: {...context, tag: [...context.tag, ...tag]}, cb: test});
 }
 
 export const addTag = (tags: string[]) => {
