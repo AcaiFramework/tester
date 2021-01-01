@@ -1,20 +1,24 @@
 // Interfaces
-import ContextInterface 			from "../interfaces/context.ts";
-import { ExpectAssertionInterface } from "../interfaces/expect.ts";
+import ContextInterface 		from "../interfaces/context.ts";
+import GroupAuxiliaryInterface 	from "../interfaces/groupAuxiliary.ts";
 
 // Modules
-import expect 							from "../utils/assertions.ts";
-import { addDepth, addTag, setValue } 	from "../utils/context.ts";
-import { addGroup } 					from "../utils/groupQueue.ts";
+import { addDepth, addTag, setValue, addEvent } from "../utils/context.ts";
+import { addGroup } 							from "../utils/groupQueue.ts";
 
-const groupMethod = (description: string, callback: (expect: ExpectAssertionInterface) => void) => {
+const groupMethod = (description: string, callback: (expect: GroupAuxiliaryInterface) => void) => {
 	const context: Partial<ContextInterface> = {};
 
 	addGroup(async () => {
 		addDepth();
 		if (context.tag) addTag(context.tag);
 		setValue("groupMessage", description);
-		await callback(expect);
+		await callback({
+			beforeAll	: (callback) => addEvent('beforeAll', 	callback),
+			beforeEach	: (callback) => addEvent('beforeEach', 	callback),
+			afterAll	: (callback) => addEvent('afterAll', 	callback),
+			afterEach	: (callback) => addEvent('afterEach', 	callback),
+		});
 	});
 
 	return {

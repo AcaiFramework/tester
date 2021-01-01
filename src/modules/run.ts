@@ -5,6 +5,7 @@ import { getGroups, resetGroups } 						from "../utils/groupQueue.ts";
 import { log } 											from "../utils/logging.ts";
 import { getFail } 										from "../utils/failCount.ts";
 import { repeat } 										from "../utils/string.ts";
+import ContextInterface from "../interfaces/context.ts";
 
 const runMethod = async (tags: string[] = [], runAll = false) => {
 	// -------------------------------------------------
@@ -56,6 +57,7 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	// get info
 	const only 		= getOnly();
 	const except 	= getExcept();
+	let lastContext = {} as ContextInterface;
 
 	// run all tests
 	for (let i = 0; i < tests.length; i += 1) {
@@ -77,13 +79,33 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 			continue;
 		}
 
-		if (currMessage !== context.groupMessage && context.groupMessage) {
-			log(context.groupMessage, true);
-			currMessage = context.groupMessage;
+		// check if all tests of the last type were run
+		if (lastContext.afterAll && lastContext.afterAll.length > 0 && `${lastContext.groupMessage}` !== `${context.groupMessage}`) {
+			lastContext.afterAll.forEach(i => i());
 		}
 
+		if (currMessage !== context.groupMessage) {
+			if (context.groupMessage) {
+				log(context.groupMessage, true);
+				currMessage = context.groupMessage;
+
+				// run all before all
+				context.beforeAll.forEach(i => i());
+			}
+		}
+
+		// run all before each
+		context.beforeEach.forEach(i => i());
+
 		await tests[i].cb();
+
+		// run all after each
+		context.afterEach.forEach(i => i());
+		lastContext = context;
 	}
+
+	// run all after all
+	getContext().afterAll.forEach(i => i());
 	
 	// -------------------------------------------------
 	// Feedback

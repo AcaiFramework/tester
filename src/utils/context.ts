@@ -12,6 +12,12 @@ let context: ContextInterface = {
 	depth 	: -1,
 	order 	: 0,
 	tag		: [],
+	
+	// callbacks
+	beforeAll	:[],
+	beforeEach	:[],
+	afterAll	:[],
+	afterEach	:[],
 };
 
 // -------------------------------------------------
@@ -26,6 +32,11 @@ export const setValue = (key: keyof typeof context, value: unknown, addOrder = t
 
 export const addTag = (tags: string[]) => {
 	context = {...context, tag:[...context.tag,...tags]};
+}
+
+type eventTypes = "beforeAll" | "beforeEach" | "afterAll" | "afterEach";
+export const addEvent = (eventType: eventTypes, callback: () => void) => {
+	context = {...context, [eventType]: [...context[eventType], callback]};
 }
 
 export const setContext = (value: ContextInterface) => {

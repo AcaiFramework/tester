@@ -4,4 +4,10 @@ export default interface ContextInterface {
 	groupMessage?	: string;
 	testMessage?	: string;
 	tag				: string[];
+
+	// callbacks
+	beforeAll	: (() => void)[];
+	beforeEach	: (() => void)[];
+	afterAll	: (() => void)[];
+	afterEach	: (() => void)[];
 }
