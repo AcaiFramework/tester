@@ -1,9 +1,9 @@
-<p align="center"><img src="https://github.com/AcaiFramework/query/blob/master/src/img/logo.svg" width="256"></p>
+<p align="center"><img src="https://api.aposoftworks.com/storage/image/ehRdFIz6tqiERXID1SIXAeu0mmTBKLdixIXsNj9s.png" width="256"></p>
 
 # aGAIN
 ## Açai Testing Framework documentation
 
-[![GitHub](https://img.shields.io/github/license/AcaiFramework/testing)](https://github.com/AcaiFramework/testing) [![Build Status](https://travis-ci.org/AcaiFramework/testing.svg?branch=master)](https://travis-ci.org/AcaiFramework/testing) [![Support](https://img.shields.io/badge/Patreon-Support-orange.svg?logo=Patreon)](https://www.patreon.com/rafaelcorrea) [![Coverage Status](https://coveralls.io/repos/github/AcaiFramework/testing/badge.svg?branch=master)](https://coveralls.io/github/AcaiFramework/testing?branch=master)
+[![GitHub](https://img.shields.io/github/license/AcaiFramework/tester)](https://github.com/AcaiFramework/tester) [![Build Status](https://travis-ci.org/AcaiFramework/tester.svg?branch=master)](https://travis-ci.org/AcaiFramework/tester) [![Support](https://img.shields.io/badge/Patreon-Support-orange.svg?logo=Patreon)](https://www.patreon.com/rafaelcorrea)
 
 
 For our goals, the existing testing libraries didn't suffice, so we made our own. We made the tests to easily scale and allow you to have an extremely free enviroment to tinker with.
