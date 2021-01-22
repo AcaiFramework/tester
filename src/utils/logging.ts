@@ -25,7 +25,7 @@ export const log = (message: string | string[], breakLine = false) => {
 	return print;
 }
 
-export const getStackTrace = () => {
+export const getStackTrace = (index = 4) => {
 	var stack;
   
 	try {
@@ -36,5 +36,5 @@ export const getStackTrace = () => {
 	}
 	
 	stack = stack.split('\n').map(function (line: string) { return line.trim(); });
-	return stack[4];
+	return stack[index];
 };

@@ -3,7 +3,7 @@ import { getContext, getExcept, getOnly, setContext } 	from "../utils/context.ts
 import { getTests } 									from "../utils/testQueue.ts";
 import { getGroups, resetGroups } 						from "../utils/groupQueue.ts";
 import { fail, log, success } 											from "../utils/logging.ts";
-import { getFail } 										from "../utils/failCount.ts";
+import { addFail, getFail } 										from "../utils/failCount.ts";
 import { repeat } 										from "../utils/string.ts";
 import * as testMessages								from "../utils/ranTests.ts";
 import ContextInterface from "../interfaces/context.ts";
@@ -125,7 +125,10 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 			const key 	= Object.keys(i)[0];
 			const value = i[key];
 
-			if (value.success)
+			if (!value || value.success === undefined || value.messages.length === 0) {
+				console.log(`${success(key)} (No assertions made)`);
+			}
+			else if (value.success)
 				console.log(`${success(key)} (${value.messages.join(", ")})`);
 			else
 				console.log(`${fail(key)} (${value.messages.join(", ")})`);
