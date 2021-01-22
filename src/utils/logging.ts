@@ -3,20 +3,26 @@ import { repeat } 		from "./string.ts";
 import { getContext } 	from "./context.ts";
 
 export const success = (message: string) => {
-	const context = getContext();
-	const prefix = context.groupMessage ? "\u2002":"";
-	console.log(`${repeat("\t", context.depth)}${prefix}\x1b[32m✓ - ${message}\x1b[37m`);
+	const context 	= getContext();
+	const prefix 	= context.groupMessage ? "\u2002":"";
+	const print 	= `${repeat("\t", context.depth)}${prefix}\x1b[32m✓\x1b[37m - ${message}`;
+	
+	return print;
 }
 
 export const fail = (message: string) => {
-	const context = getContext();
-	const prefix = context.groupMessage ? "\u2002":"";
-	console.log(`${repeat("\t", context.depth)}${prefix}\x1b[31mX - ${message}\x1b[37m`);
+	const context 	= getContext();
+	const prefix 	= context.groupMessage ? "\u2002":"";
+	const print 	= `${repeat("\t", context.depth)}${prefix}\x1b[31mX\x1b[37m - ${message}`;
+	
+	return print;
 }
 
 export const log = (message: string | string[], breakLine = false) => {
-	const context = getContext();
-	console.log(`${breakLine ? "\n":""}${repeat("\t", context.depth)}${message}`);
+	const context 	= getContext();
+	const print 	= `${breakLine ? "\n":""}${repeat("\t", context.depth)}${message}`;
+	
+	return print;
 }
 
 export const getStackTrace = () => {
