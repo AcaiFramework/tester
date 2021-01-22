@@ -35,6 +35,10 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	let currMessage = "";
 	
 	tests = tests.sort((comparator1, comparator2) => {
+		if (comparator1.context.depth === comparator2.context.depth) {
+			return comparator1.context.groupMessage === comparator2.context.groupMessage ? 0:-1;
+		}
+
 		return comparator1.context.order - comparator2.context.order;
 	});
 	
