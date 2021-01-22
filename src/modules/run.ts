@@ -2,9 +2,10 @@
 import { getContext, getExcept, getOnly, setContext } 	from "../utils/context.ts";
 import { getTests } 									from "../utils/testQueue.ts";
 import { getGroups, resetGroups } 						from "../utils/groupQueue.ts";
-import { log } 											from "../utils/logging.ts";
+import { fail, log, success } 											from "../utils/logging.ts";
 import { getFail } 										from "../utils/failCount.ts";
 import { repeat } 										from "../utils/string.ts";
+import * as testMessages								from "../utils/ranTests.ts";
 import ContextInterface from "../interfaces/context.ts";
 
 const runMethod = async (tags: string[] = [], runAll = false) => {
@@ -50,14 +51,11 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	// Run tests
 	// -------------------------------------------------
 
-	console.log("\n\nRunning tests");
-	console.log(repeat("=", 20));
-	console.log("");
-
 	// get info
 	const only 		= getOnly();
 	const except 	= getExcept();
 	let lastContext = {} as ContextInterface;
+	const messages 	= [] as (string | Record<string, {success: boolean, messages:string[]}>)[];
 
 	// run all tests
 	for (let i = 0; i < tests.length; i += 1) {
@@ -86,7 +84,7 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 
 		if (currMessage !== context.groupMessage) {
 			if (context.groupMessage) {
-				log(context.groupMessage, true);
+				messages.push(log(context.groupMessage, true));
 				currMessage = context.groupMessage;
 
 				// run all before all
@@ -99,6 +97,10 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 
 		await tests[i].cb();
 
+		// register messages
+		messages.push(testMessages.getContext())
+		testMessages.clearContext();
+
 		// run all after each
 		context.afterEach.forEach(i => i());
 		lastContext = context;
@@ -106,6 +108,27 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 
 	// run all after all
 	getContext().afterAll.forEach(i => i());
+	
+	// -------------------------------------------------
+	// Print tests
+	// -------------------------------------------------
+
+	console.log("\n\nRunning tests");
+	console.log(repeat("=", 20));
+
+	messages.forEach(i => {
+		if (typeof i === "object") {
+			const key 	= Object.keys(i)[0];
+			const value = i[key];
+
+			if (value.success)
+				console.log(`${success(key)} (${value.messages.join(", ")})`);
+			else
+				console.log(`${fail(key)} (${value.messages.join(", ")})`);
+		}
+		else
+			console.log(i);
+	});
 	
 	// -------------------------------------------------
 	// Feedback
@@ -126,6 +149,7 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	if (fails.length > 0) {
 		console.log("Error log");
 		console.log(repeat("=", 20));
+		console.log("");
 
 		for (let i = 0; i < fails.length; i++) {
 			console.log(`\x1b[31m${fails[i].testMessage}\x1b[37m`);

@@ -3,6 +3,7 @@ import ExpectInterface, { ExpectAssertionInterface } from "../interfaces/expect.
 
 // Utils
 import { getContext } from "./context.ts";
+import { addValue } from "./ranTests.ts";
 import { addFail } from "./failCount.ts";
 import { fail, success } from "./logging.ts";
 
@@ -22,9 +23,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(`${context.testMessage} (toBe)`);
+				addValue(context.testMessage as string, "toBe", true);
 			else
-				fail(`${context.testMessage} (toBe)`);
+				addValue(context.testMessage as string, "toBe", false);
 
 			return this;
 		}
@@ -42,9 +43,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(`${context.testMessage} (toNotBe)`);
+				addValue(context.testMessage as string, "toNotBe", true);
 			else
-				fail(`${context.testMessage} (toNotBe)`);
+				addValue(context.testMessage as string, "toNotBe", false);
 
 			return this;
 		}
@@ -63,9 +64,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(`${context.testMessage} (toTypeOf)`);
+				addValue(context.testMessage as string, "toTypeOf", true);
 			else
-				fail(`${context.testMessage} (toTypeOf)`);
+				addValue(context.testMessage as string, "toTypeOf", false);
 
 			return this;
 		}
@@ -74,7 +75,7 @@ const assertions = (valueToAssert: unknown) => {
 		// toDefined
 		// -------------------------------------------------
 
-		this.toDefined = () => {
+		this.toBeDefined = () => {
 			const passes 	= valueToAssert !== undefined;
 			const context 	= getContext();
 
@@ -83,9 +84,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(`${context.testMessage} (toDefined)`);
+				addValue(context.testMessage as string, "toBeDefined", true);
 			else
-				fail(`${context.testMessage} (toDefined)`);
+				addValue(context.testMessage as string, "toBeDefined", false);
 
 			return this;
 		}
@@ -94,7 +95,7 @@ const assertions = (valueToAssert: unknown) => {
 		// toUndefined
 		// -------------------------------------------------
 
-		this.toUndefined = () => {
+		this.toBeUndefined = () => {
 			const passes 	= valueToAssert === undefined;
 			const context 	= getContext();
 
@@ -103,9 +104,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(`${context.testMessage} (toUndefined)`);
+				addValue(context.testMessage as string, "toBeUndefined", true);
 			else
-				fail(`${context.testMessage} (toUndefined)`);
+				addValue(context.testMessage as string, "toBeUndefined", false);
 
 			return this;
 		}
@@ -114,7 +115,7 @@ const assertions = (valueToAssert: unknown) => {
 		// toNull
 		// -------------------------------------------------
 
-		this.toNull = () => {
+		this.toBeNull = () => {
 			const passes 	= valueToAssert === null;
 			const context 	= getContext();
 
@@ -123,9 +124,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(`${context.testMessage} (toNull)`);
+				addValue(context.testMessage as string, "toBeNull", true);
 			else
-				fail(`${context.testMessage} (toNull)`);
+				addValue(context.testMessage as string, "toBeNull", false);
 
 			return this;
 		}
@@ -134,7 +135,7 @@ const assertions = (valueToAssert: unknown) => {
 		// toNotNull
 		// -------------------------------------------------
 
-		this.toNotNull = () => {
+		this.toNotBeNull = () => {
 			const passes 	= valueToAssert !== null;
 			const context 	= getContext();
 
@@ -143,9 +144,9 @@ const assertions = (valueToAssert: unknown) => {
 
 			// feedback log
 			if (passes)
-				success(`${context.testMessage} (toNotNull)`);
+				addValue(context.testMessage as string, "toNotBeNull", true);
 			else
-				fail(`${context.testMessage} (toNotNull)`);
+				addValue(context.testMessage as string, "toNotBeNull", false);
 
 			return this;
 		}
