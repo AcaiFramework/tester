@@ -31,16 +31,8 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	// Sort tests
 	// -------------------------------------------------
 
-	let tests = getTests().reverse();
+	const tests = getTests();
 	let currMessage = "";
-	
-	tests = tests.sort((comparator1, comparator2) => {
-		if (comparator1.context.depth === comparator2.context.depth) {
-			return comparator1.context.groupMessage === comparator2.context.groupMessage ? 0:-1;
-		}
-
-		return comparator1.context.order - comparator2.context.order;
-	});
 	
 	// -------------------------------------------------
 	// No tests found
@@ -102,7 +94,8 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 		await tests[i].cb();
 
 		// register messages
-		messages.push(testMessages.getContext())
+		const testMessagesResponse = testMessages.getContext();
+		messages.push({...testMessagesResponse});
 		testMessages.clearContext();
 
 		// run all after each
@@ -112,7 +105,7 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 
 	// run all after all
 	getContext().afterAll.forEach(i => i());
-	
+
 	// -------------------------------------------------
 	// Print tests
 	// -------------------------------------------------

@@ -6,7 +6,7 @@ import expect 				from "../utils/assertions.ts";
 import { setValue } 		from "../utils/context.ts";
 import { addFail } 			from "../utils/failCount.ts";
 import { getStackTrace } 	from "../utils/logging.ts";
-import { addValue } 		from "../utils/ranTests.ts";
+import { addValue, getContext }			from "../utils/ranTests.ts";
 import { addTag, addTest }	from "../utils/testQueue.ts";
 
 const testMethod = (description: string, callback: (expect: ExpectAssertionInterface) => void) => {
