@@ -16,7 +16,7 @@ const assertions = (valueToAssert: unknown) => {
 
 		this.toBe = (valueToTest) => {
 			const context 	= getContext();
-			const passes 	= valueToAssert === valueToTest;
+			const passes 	= typeof valueToTest === "object" ? (JSON.stringify(valueToAssert) === JSON.stringify(valueToTest)) : valueToAssert === valueToTest;
 
 			// add to count
 			if (!passes) addFail(`${valueToAssert} is not equal to ${valueToTest}`);
