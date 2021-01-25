@@ -2,8 +2,8 @@
 import { getContext, getExcept, getOnly, setContext } 	from "../utils/context.ts";
 import { getTests } 									from "../utils/testQueue.ts";
 import { getGroups, resetGroups } 						from "../utils/groupQueue.ts";
-import { fail, log, success } 											from "../utils/logging.ts";
-import { addFail, getFail } 										from "../utils/failCount.ts";
+import { fail, log, success }							from "../utils/logging.ts";
+import { getFail } 										from "../utils/failCount.ts";
 import { repeat } 										from "../utils/string.ts";
 import * as testMessages								from "../utils/ranTests.ts";
 import ContextInterface from "../interfaces/context.ts";
@@ -48,10 +48,11 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 	// -------------------------------------------------
 
 	// get info
-	const only 		= getOnly();
-	const except 	= getExcept();
-	let lastContext = {} as ContextInterface;
-	const messages 	= [] as (string | Record<string, {success: boolean, messages:string[]}>)[];
+	const only 			= getOnly();
+	const except 		= getExcept();
+	let ranTestsCount 	= 0;
+	let lastContext 	= {} as ContextInterface;
+	const messages 		= [] as (string | Record<string, {success: boolean, messages:string[]}>)[];
 
 	// run all tests
 	for (let i = 0; i < tests.length; i += 1) {
@@ -93,8 +94,11 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 
 		await tests[i].cb();
 
+		ranTestsCount++;
+
 		// register messages
 		const testMessagesResponse = testMessages.getContext();
+		console.log(testMessagesResponse);
 		messages.push({...testMessagesResponse});
 		testMessages.clearContext();
 
@@ -138,7 +142,7 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 
 	console.log("\nResults");
 	console.log(repeat("=", 20));
-	console.log(`Total:\t${tests.length}`);
+	console.log(`Total:\t${ranTestsCount}`);
 	console.log(`Failed:\t${fails.length}`);
 	console.log("");
 	
