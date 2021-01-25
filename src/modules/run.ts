@@ -98,7 +98,6 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 
 		// register messages
 		const testMessagesResponse = testMessages.getContext();
-		console.log(testMessagesResponse);
 		messages.push({...testMessagesResponse});
 		testMessages.clearContext();
 
