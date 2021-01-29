@@ -3,7 +3,7 @@
 # aGAIN
 ## Açai Testing Framework documentation
 
-[![Build Status](https://travis-ci.org/AcaiFramework/testing.svg?branch=production)](https://travis-ci.org/AcaiFramework/testing) [![Support](https://img.shields.io/badge/Patreon-Support-orange.svg?logo=Patreon)](https://www.patreon.com/rafaelcorrea)
+[![Build Status](https://travis-ci.org/AcaiFramework/tester.svg?branch=production)](https://travis-ci.org/AcaiFramework/tester) [![Support](https://img.shields.io/badge/Patreon-Support-orange.svg?logo=Patreon)](https://www.patreon.com/rafaelcorrea)
 
 A testing suite that proposes some tools that help you organize and easily escalate your own tests. 
 ** Attention! ** All of tests in the same context are ran before tests on the following context.
