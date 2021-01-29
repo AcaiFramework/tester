@@ -2,10 +2,9 @@
 import ExpectInterface, { ExpectAssertionInterface } from "../interfaces/expect.ts";
 
 // Utils
-import { getContext } from "./context.ts";
-import { addValue } from "./ranTests.ts";
-import { addFail } from "./failCount.ts";
-import { fail, success } from "./logging.ts";
+import { getContext } 	from "./context.ts";
+import { addValue } 	from "./ranTests.ts";
+import { addFail } 		from "./failCount.ts";
 
 const assertions = (valueToAssert: unknown) => {
 	const assertions = function (this: ExpectInterface) {
