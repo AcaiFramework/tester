@@ -1,10 +1,10 @@
 // Interfaces
-import { ExpectAssertionInterface } from "../interfaces/expect.ts";
+import { ExpectAssertionInterface } from "../interfaces/expect";
 
 // Modules
-import expect 								from "../utils/assertions.ts";
-import { addOnly, getContext, setValue } 	from "../utils/context.ts";
-import { addTag, addTest } 							from "../utils/testQueue.ts";
+import expect 								from "../utils/assertions";
+import { addOnly, getContext, setValue } 	from "../utils/context";
+import { addTag, addTest } 					from "../utils/testQueue";
 
 const onlyMethod = (description: string, callback: (expect: ExpectAssertionInterface) => void) => {
 	const context = getContext();

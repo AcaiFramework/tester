@@ -1,8 +1,8 @@
 // interfaces
-import QueueInterface from "../interfaces/queue.ts";
+import QueueInterface from "../interfaces/queue";
 
 // Utils
-import { getContext } from "./context.ts";
+import { getContext } from "./context";
 
 // -------------------------------------------------
 // Properties

@@ -1,13 +1,13 @@
 // Interfaces
-import { ExpectAssertionInterface } from "../interfaces/expect.ts";
+import { ExpectAssertionInterface } from "../interfaces/expect";
 
 // Utils
-import expect 				from "../utils/assertions.ts";
-import { setValue } 		from "../utils/context.ts";
-import { addFail } 			from "../utils/failCount.ts";
-import { getStackTrace } 	from "../utils/logging.ts";
-import { addValue, getContext }			from "../utils/ranTests.ts";
-import { addTag, addTest }	from "../utils/testQueue.ts";
+import expect 				from "../utils/assertions";
+import { setValue } 		from "../utils/context";
+import { addFail } 			from "../utils/failCount";
+import { getStackTrace } 	from "../utils/logging";
+import { addValue }			from "../utils/ranTests";
+import { addTag, addTest }	from "../utils/testQueue";
 
 const testMethod = (description: string, callback: (expect: ExpectAssertionInterface) => void) => {
 	const trace = getStackTrace(3);

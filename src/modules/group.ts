@@ -1,10 +1,10 @@
 // Interfaces
-import ContextInterface 		from "../interfaces/context.ts";
-import GroupAuxiliaryInterface 	from "../interfaces/groupAuxiliary.ts";
+import ContextInterface 		from "../interfaces/context";
+import GroupAuxiliaryInterface 	from "../interfaces/groupAuxiliary";
 
 // Modules
-import { addDepth, addTag, setValue, addEvent } from "../utils/context.ts";
-import { addGroup } 							from "../utils/groupQueue.ts";
+import { addDepth, addTag, setValue, addEvent } from "../utils/context";
+import { addGroup } 							from "../utils/groupQueue";
 
 const groupMethod = (description: string, callback: (expect: GroupAuxiliaryInterface) => void) => {
 	const context: Partial<ContextInterface> = {};

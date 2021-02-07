@@ -1,7 +1,7 @@
 // Interfaces
-import ExtraOptionsInterface 		from "./extraOptions.ts";
-import { ExpectAssertionInterface } from "./expect.ts";
-import GroupAuxiliaryInterface 		from "./groupAuxiliary.ts";
+import { ExpectAssertionInterface } from "./expect";
+import ExtraOptionsInterface 		from "./extraOptions";
+import GroupAuxiliaryInterface 		from "./groupAuxiliary";
 export default interface TestModuleInterface {
 	/**
 	 * Basic way of doing a test
@@ -14,6 +14,6 @@ export default interface TestModuleInterface {
 	except: (description: string, callback: (expect: ExpectAssertionInterface) => void) => ExtraOptionsInterface;
 	tag: (tag: string | string[], description: string, callback: (expect: ExpectAssertionInterface) => void) => void;
 	
-	find: (reg: RegExp) => void;
+	find: (reg: string) => void;
 	run: (tags?: string[], all?: boolean) => void;
 }

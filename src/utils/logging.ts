@@ -1,6 +1,6 @@
 // Utils
-import { repeat } 		from "./string.ts";
-import { getContext } 	from "./context.ts";
+import { repeat } 		from "./string";
+import { getContext } 	from "./context";
 
 export const success = (message: string) => {
 	const context 	= getContext();

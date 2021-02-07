@@ -1,4 +1,8 @@
-import test from "./mod.ts";
+import test from "./mod";
 
-await test.find(/\S\.(test|tests)\.(js|ts)$/);
-await test.run(["tag2"]);
+async function main() {
+	await test.find("./*/*(*.test.js|*.test.ts)");
+	await test.run(["tag2"]);
+}
+
+main();

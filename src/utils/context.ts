@@ -1,5 +1,5 @@
 // interfaces
-import ContextInterface from "../interfaces/context.ts";
+import ContextInterface from "../interfaces/context";
 
 // -------------------------------------------------
 // Properties

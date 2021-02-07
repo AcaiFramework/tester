@@ -1,12 +1,14 @@
 // Utils
-import { getContext, getExcept, getOnly, setContext } 	from "../utils/context.ts";
-import { getTests } 									from "../utils/testQueue.ts";
-import { getGroups, resetGroups } 						from "../utils/groupQueue.ts";
-import { fail, log, success }							from "../utils/logging.ts";
-import { getFail } 										from "../utils/failCount.ts";
-import { repeat } 										from "../utils/string.ts";
-import * as testMessages								from "../utils/ranTests.ts";
-import ContextInterface from "../interfaces/context.ts";
+import { getContext, getExcept, getOnly, setContext } 	from "../utils/context";
+import { getTests } 									from "../utils/testQueue";
+import { getGroups, resetGroups } 						from "../utils/groupQueue";
+import { fail, log, success }							from "../utils/logging";
+import { getFail } 										from "../utils/failCount";
+import { repeat } 										from "../utils/string";
+import * as testMessages								from "../utils/ranTests";
+
+// Interfaces
+import ContextInterface from "../interfaces/context";
 
 const runMethod = async (tags: string[] = [], runAll = false) => {
 	// -------------------------------------------------
@@ -160,9 +162,9 @@ const runMethod = async (tags: string[] = [], runAll = false) => {
 			console.log(`\x1b[31m${fails[i].stack}\x1b[37m\n`);
 		}
 
-		Deno.exit(1);
+		process.exit(1);
 	}
-	Deno.exit(0);
+	process.exit(0);
 }
 
 export default runMethod;

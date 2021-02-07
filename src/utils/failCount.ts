@@ -1,7 +1,7 @@
 // Interfaces
-import ContextInterface from "../interfaces/context.ts";
-import { getContext } from "./context.ts";
-import { getStackTrace } from "./logging.ts";
+import { getContext } 		from "./context";
+import { getStackTrace } 	from "./logging";
+import ContextInterface 	from "../interfaces/context";
 
 const fails: (ContextInterface & {message: string, stack: string})[] = [];
 

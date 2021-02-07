@@ -1,14 +1,14 @@
 // Modules
-import runMethod from "./src/modules/run.ts";
-import testMethod from "./src/modules/test.ts";
-import onlyMethod from "./src/modules/only.ts";
-import findMethod from "./src/modules/find.ts";
-import groupMethod from "./src/modules/group.ts";
-import exceptMethod from "./src/modules/except.ts";
-import tagMethod from "./src/modules/tag.ts";
+import runMethod 	from "./src/modules/run";
+import testMethod	from "./src/modules/test";
+import onlyMethod 	from "./src/modules/only";
+import findMethod 	from "./src/modules/find";
+import groupMethod 	from "./src/modules/group";
+import exceptMethod from "./src/modules/except";
+import tagMethod 	from "./src/modules/tag";
 
 // Interfaces
-import TestModuleInterface from "./src/interfaces/testModule.ts";
+import TestModuleInterface from "./src/interfaces/testModule";
 
 // build
 const test 	= testMethod as TestModuleInterface;
