@@ -1,6 +1,6 @@
 {
   "name": "@acai/testing",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A complete solution toolkit for your test suite",
   "repository": "https://github.com/AcaiFramework/server.git",
   "author": "Rafael <rafael.chaves98@hotmail.com>",
@@ -13,7 +13,8 @@
   "types": "dist/types",
   "scripts": {
     "build": "tsc",
-    "test": "yarn build && node ./dist/index.js"
+    "test": "yarn build && node ./dist/index.js",
+    "prepublishOnly": "yarn build"
   },
   "engines": {
     "node": ">=12.0.0"
