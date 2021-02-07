@@ -1,6 +1,6 @@
 {
   "name": "@acai/testing",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A complete solution toolkit for your test suite",
   "repository": "https://github.com/AcaiFramework/server.git",
   "author": "Rafael <rafael.chaves98@hotmail.com>",
@@ -9,7 +9,7 @@
   "files": [
     "dist/**"
   ],
-  "main": "dist/mod.js",
+  "main": "dist/index.js",
   "types": "dist/types",
   "scripts": {
     "build": "tsc",
