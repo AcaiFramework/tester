@@ -16,6 +16,5 @@
     "sourceMap": true,
     "declarationDir": "dist/types"
   },
-  "exclude": ["node_modules", "dist"],
-  "include": ["./**/*"]
+  "exclude": ["node_modules", "dist"]
 }
